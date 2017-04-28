@@ -14,6 +14,8 @@
 /* #undef HAVE__SNPRINTF */
 /* #undef HAVE__STRDUP */
 /* #undef HAVE__STRICMP */
+/* #undef HAVE__STRTOI64 */
+/* #undef HAVE__STRTOUI64 */
 #define HAVE_FILENO
 #define HAVE_FSEEKO
 #define HAVE_FTELLO
@@ -26,6 +28,8 @@
 #define HAVE_STRCASECMP
 #define HAVE_STRDUP
 /* #undef HAVE_STRICMP */
+#define HAVE_STRTOLL
+#define HAVE_STRTOULL
 /* #undef HAVE_STRUCT_TM_TM_ZONE */
 #define HAVE_STDBOOL_H
 #define HAVE_STRINGS_H
@@ -49,9 +53,10 @@
 /* #undef HAVE_NDIR_H */
 /* #undef HAVE_SYS_DIR_H */
 /* #undef HAVE_SYS_NDIR_H */
+/* #undef WORDS_BIGENDIAN */
 /* END DEFINES */
 #define PACKAGE "libzip"
-#define VERSION "1.1.2"
+#define VERSION "1.2.0"
 
 #ifndef HAVE_SSIZE_T_LIBZIP
 #  if SIZE_T_LIBZIP == INT_LIBZIP

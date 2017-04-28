@@ -1,4 +1,4 @@
-# https://developer.android.com/ndk/guides/android_mk.html
+# see https://developer.android.com/ndk/guides/android_mk.html
 
 
 LOCAL_PATH := $(call my-dir)
@@ -9,7 +9,7 @@ LOCAL_MODULE := libzip
 
  
 LOCAL_CFLAGS := -DHAVE_CONFIG_H=1
-#LOCAL_C_INCLUDES += $(LOCAL_PATH)/gladman-fcrypt/
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/gladman-fcrypt
  
 
 
