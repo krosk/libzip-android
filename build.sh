@@ -2,7 +2,7 @@
 cd `dirname $0`
 
 #set the path to the android ndk here:
-export ANDROID_NDK=~/Library/Android/sdk/ndk-bundle/
+export ANDROID_NDK=~/data/Android/Sdk/ndk-bundle/
 
 
 
@@ -16,8 +16,8 @@ export NDK_PROJECT_PATH=./
 # and https://developer.android.com/ndk/guides/ndk-build.html
 
 ndk-build APP_STL=c++_shared     \
-          APP_PLATFORM=android-26    \
-          APP_ABI="arm64-v8a x86_64"     \
+          APP_PLATFORM=android-21    \
+          APP_ABI="arm64-v8a x86_64 x86 armeabi-v7a"     \
           NDK_TOOLCHAIN_VERSION=clang
           NDK_PROJECT_PATH=./       \
           $@
