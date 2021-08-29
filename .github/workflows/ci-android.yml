@@ -1,4 +1,4 @@
-name: Release library - CI (Android)
+name: Latest release (Android)
 
 on:
   push:
@@ -87,5 +87,5 @@ jobs:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./build/libzip-android-all-ci.zip
         asset_name: libzip-android-all-ci.zip
-        tag: CI
+        tag: 'Latest release (Android)'
         overwrite: true
