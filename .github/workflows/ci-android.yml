@@ -81,11 +81,15 @@ jobs:
         filename: 'libzip-android-all-ci.zip'
         directory: './build'
 
+    - name: Debug
+      run: |
+        ls -al
+
     - name: Update binaries of release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: libzip-android-all-ci.zip
+        file: build/libzip-android-all-ci.zip
         asset_name: libzip-android-all-ci.zip
         tag: 'Latest release (Android)'
         overwrite: true
