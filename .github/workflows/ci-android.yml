@@ -78,14 +78,14 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.0
       with:
         type: 'zip'
-        filename: 'libzip-ci.zip'
+        filename: 'libzip-android-all-ci.zip'
         directory: './build'
 
     - name: Update binaries of release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./libzip-ci.zip
-        asset_name: libzip-ci.zip
+        file: ./libzip-android-all-ci.zip
+        asset_name: libzip-android-all-ci.zip
         tag: CI
         overwrite: true
