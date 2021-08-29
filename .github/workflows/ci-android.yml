@@ -79,6 +79,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'libzip-ci.zip'
+        directory: './build'
 
     - name: Update binaries of release
       uses: svenstaro/upload-release-action@v1-release
