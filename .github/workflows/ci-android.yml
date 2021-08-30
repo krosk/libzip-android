@@ -70,9 +70,6 @@ jobs:
     - name: Build library
       run: |
         ndk-build NDK_LIBS_OUT=./build/lib
-        mkdir ./build/include
-        cp jni/zip.h ./build/include
-        cp jni/zipconf.h ./build/include
 
     - name: Package library
       uses: TheDoctor0/zip-release@0.6.0
