@@ -88,6 +88,13 @@ jobs:
         filename: libzip-android-all-${{ github.event.inputs.release_version || env.DEFAULT_RELEASE }}.zip
         directory: ./build
 
+    - name: Tag Repo
+      uses: richardsimko/update-tag@v1
+      with:
+        tag_name: Android-${{ github.event.inputs.release_version || env.DEFAULT_RELEASE }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Update binaries of release
       uses: svenstaro/upload-release-action@v1-release
       with:
