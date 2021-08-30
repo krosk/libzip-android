@@ -2,11 +2,11 @@ libzip for Android
 ==================
 This is a repackaging of libzip for the Android NDK, using *ndk-build* to build.
 
-Source files added: *config.h*, *zipconfig.h*.
+Source files added: *config.h*, *zipconf.h*.
 
-Build files added:  *Android.mk*, *Application.mk*, and (for convenience and/or example usage) *build.sh*
+Build files added:  *Android.mk*, *Application.mk*.
 
-The 'master' branch of this repository contains version **1.2.0** of libzip.
+libzip source code is downloaded from the official libzip repository (https://github.com/nih-at/libzip/releases).
 
 libzip has been written by Dieter Baron and Thomas Klausner (https://nih.at/libzip)
 
