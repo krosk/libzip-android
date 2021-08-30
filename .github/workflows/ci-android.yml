@@ -2,6 +2,13 @@ name: Latest release (Android)
 
 on:
   push:
+  
+  dispatch:
+    inputs:
+      release_version:
+        description: 'Release version (no space)'
+        required: true
+        default: 'latest'
 
 jobs:
   build:
@@ -75,14 +82,14 @@ jobs:
       uses: TheDoctor0/zip-release@0.6.0
       with:
         type: 'zip'
-        filename: 'libzip-android-all-ci.zip'
+        filename: 'libzip-android-all-${{ github.event.inputs.release_version || 'latest' }}.zip'
         directory: './build'
 
     - name: Update binaries of release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build/libzip-android-all-ci.zip
-        asset_name: libzip-android-all-ci.zip
-        tag: Android-latest
+        file: build/libzip-android-all-${{ github.event.inputs.release_version || 'latest' }}.zip
+        asset_name: libzip-android-all-${{ github.event.inputs.release_version || 'latest' }}.zip
+        tag: Android-${{ github.event.inputs.release_version || 'latest' }}
         overwrite: true
