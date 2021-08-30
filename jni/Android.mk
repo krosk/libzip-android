@@ -1,28 +1,28 @@
-# see https://developer.android.com/ndk/guides/android_mk.html
-
-
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+LIB_FOLDER := libzip-rel-1-2-0/lib
+ECHO := $(shell wget -nc https://github.com/nih-at/libzip/archive/refs/tags/rel-1-2-0.zip; unzip -n rel-1-2-0.zip $(LIB_FOLDER)/* -x *win32* -d $(LOCAL_PATH))
+
 LOCAL_MODULE := libzip
 
- 
 LOCAL_CFLAGS := -DHAVE_CONFIG_H=1
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/gladman-fcrypt
- 
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(LIB_FOLDER)/gladman-fcrypt
 
+LOCAL_SRC_FILES := $(wildcard $(LOCAL_PATH)/**/**/*.c)
+#LOCAL_SRC_FILES += $(wildcard $(LOCAL_PATH)/**/**/**/*.c)
+LOCAL_SRC_FILES := $(LOCAL_SRC_FILES:$(LOCAL_PATH)/%=%)
 
-MY_PATH=$(LOCAL_PATH)
- 
-# http://falsinsoft.blogspot.de/2014/10/androidmk-include-multiple-source-files.html
-LOCAL_SRC_FILES :=  $(wildcard $(MY_PATH)/*.c)
-LOCAL_SRC_FILES := $(LOCAL_SRC_FILES:$(MY_PATH)/%=%)
-  
-
-
-# link library libz
 LOCAL_LDLIBS := -lz
 
 include $(BUILD_SHARED_LIBRARY)
-#include$lude $(BUILD_STATIC_LIBRARY)
+
+ifndef NDK_LIBS_OUT
+NDK_LIBS_OUT := ./libs
+endif
+
+all:
+	[ -e $(NDK_LIBS_OUT)/../include ] || mkdir $(NDK_LIBS_OUT)/../include
+	cp $(LOCAL_PATH)/zipconf.h $(NDK_LIBS_OUT)/../include
+	cp $(LOCAL_PATH)/$(LIB_FOLDER)/zip.h $(NDK_LIBS_OUT)/../include
