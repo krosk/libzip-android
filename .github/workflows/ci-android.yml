@@ -1,4 +1,7 @@
-name: Latest release (Android)
+name: Android release
+
+env:
+  DEFAULT_RELEASE: 'latest'
 
 on:
   push:
@@ -81,15 +84,15 @@ jobs:
     - name: Package library
       uses: TheDoctor0/zip-release@0.6.0
       with:
-        type: 'zip'
-        filename: 'libzip-android-all-${{ github.event.inputs.release_version || 'latest' }}.zip'
-        directory: './build'
+        type: zip
+        filename: libzip-android-all-${{ github.event.inputs.release_version || env.DEFAULT_RELEASE }}.zip
+        directory: ./build
 
     - name: Update binaries of release
       uses: svenstaro/upload-release-action@v1-release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build/libzip-android-all-${{ github.event.inputs.release_version || 'latest' }}.zip
-        asset_name: libzip-android-all-${{ github.event.inputs.release_version || 'latest' }}.zip
-        tag: Android-${{ github.event.inputs.release_version || 'latest' }}
+        file: build/libzip-android-all-${{ github.event.inputs.release_version || env.DEFAULT_RELEASE }}.zip
+        asset_name: libzip-android-all-${{ github.event.inputs.release_version || env.DEFAULT_RELEASE }}.zip
+        tag: Android-${{ github.event.inputs.release_version || env.DEFAULT_RELEASE }}
         overwrite: true
