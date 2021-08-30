@@ -6,7 +6,7 @@ env:
 on:
   push:
   
-  dispatch:
+  workflow_dispatch:
     inputs:
       release_version:
         description: 'Release version (no space)'
